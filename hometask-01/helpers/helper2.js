@@ -6,10 +6,13 @@ const getGoodValue = item => {
   return (item[quant] * normalizeGoodPrice(item[price])) / 100;
 };
 
-const findHighestValueGood = async goods => {
+const findGoodWithHighestValue = goods => {
   if (goods === undefined) goods = require('../data.json');
 
   return goods.sort((a, b) => getGoodValue(b) - getGoodValue(a)).shift()
 }
 
-module.exports = findHighestValueGood;
+module.exports = {
+  getGoodValue,
+  findGoodWithHighestValue
+};

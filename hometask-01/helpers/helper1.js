@@ -1,5 +1,7 @@
-const filterGoodsByKeyAndValue = (goods, key, value) => {
-  return goods.filter(item => Object.keys(item).includes(key) && item[key] === value);
-};
+module.exports = (goods, query) => {
+  const queryKeys = Object.keys(query);
 
-module.exports = filterGoodsByKeyAndValue;
+  return goods.filter(item => {
+    return queryKeys.every(key => item[key].toString() === query[key].toString())
+  });
+};
