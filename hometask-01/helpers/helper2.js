@@ -9,7 +9,9 @@ const getGoodValue = item => {
 const findGoodWithHighestValue = goods => {
   if (goods === undefined) goods = require('../data.json');
 
-  return goods.sort((a, b) => getGoodValue(b) - getGoodValue(a)).shift()
+  const mostExpensiveGood = goods.sort((a, b) => getGoodValue(b) - getGoodValue(a)).shift();
+
+  return [mostExpensiveGood];
 }
 
 module.exports = {
