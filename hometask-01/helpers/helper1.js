@@ -1,7 +1,5 @@
 module.exports = (goods, query) => {
-  const queryKeys = Object.keys(query);
+  const data = Object.entries(query);
 
-  return goods.filter(item =>
-    queryKeys.every(key => item[key].toString() === query[key].toString())
-  );
+  return goods.filter(item => item[data.shift()] === data.pop());
 };

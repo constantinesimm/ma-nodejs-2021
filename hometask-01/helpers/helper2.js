@@ -1,14 +1,14 @@
 const jsonData = require('../data.json');
 
 const normalizeGoodPrice = price =>
-  Number(price.replace('$', '').replace(',', '.')) * 100;
+  Number(price.replace('$', '').replace(',', '.'));
 
 const getGoodValue = item => {
-  const [quant, price] = Object.keys(item).includes('weight')
+  const [quant, price] = item?.weight
     ? ['weight', 'pricePerKilo']
     : ['quantity', 'pricePerItem'];
 
-  return (item[quant] * normalizeGoodPrice(item[price])) / 100;
+  return item[quant] * normalizeGoodPrice(item[price]);
 };
 
 const findGoodWithHighestValue = (goods = jsonData) => {

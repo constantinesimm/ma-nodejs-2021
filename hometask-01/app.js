@@ -2,18 +2,17 @@ const dataJson = require('./data.json');
 const {
   helper1: filterGoodsByKeyAndValue,
   helper2: findGoodWithHighestValue,
-  helper3: calculateGoodPrice
+  helper3: calculateGoodPrice,
 } = require('./helpers');
 
 const boot = goods => {
   const firstAction = calculateGoodPrice(goods);
   console.log('1 ', firstAction);
 
-  const secondAction = filterGoodsByKeyAndValue(
-    goods,
-    {'item': 'orange', 'weight': '4'}
-  );
-  console.log('2 ', secondAction);
+  const secondActionOrange = filterGoodsByKeyAndValue(goods, {item: 'orange'});
+  const secondActionWeight = filterGoodsByKeyAndValue(goods, {weight: '4'});
+  const secondAction = [].concat(secondActionOrange, secondActionWeight);
+  console.log('2', secondAction);
 
   const thirdAction = findGoodWithHighestValue(secondAction);
   console.log('3 ', thirdAction);
