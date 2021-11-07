@@ -1,38 +1,29 @@
 const {
-  notFound
+  filterController,
+  getTopPriceController,
+  postTopPriceController,
+  getCommonPriceController,
+  postCommonPriceController,
+  dataController,
+  notFoundController
 } = require('./controllers');
 
-const router = {
-  data: {
-    method: 'POST',
-    pathname: '/data',
-    controller: ''
-  },
-  filter: {
-    method: 'GET',
-    pathname: '/filter',
-    controller: ''
-  },
-  topprice: {
-    method: 'GET',
-    pathname: '/topprice',
-    controller: ''
-  },
-  commonprice: {
-    method: 'GET',
-    pathname: '/commonprice',
-    controller: ''
-  }
-}
+const router = [
+  ['POST', '/data', dataController],
+  ['GET', '/filter', filterController],
+  ['POST', '/filter', filterController],
+  ['GET', '/topprice', getTopPriceController],
+  ['POST', '/topprice', postTopPriceController],
+  ['GET', '/commonprice', getCommonPriceController],
+  ['POST', '/commonprice', postCommonPriceController]
+];
 
 module.exports = (req, res) => {
-  const { pathname, method } = req;
+  for (const route in router) {
+    const [method, pathname, controller] = router[route];
 
-  for (let route of Object.keys(router)) {
-    const [routeMethod, routePathname, routeController] = router[route];
-
-    if (method === routeMethod && pathname === routePathname) return routeController(req, res);
+    if (req.method === method && req.pathname === pathname) return controller(req, res);
   }
 
-  return notFound(req, res);
+  return notFoundController(req, res);
 }

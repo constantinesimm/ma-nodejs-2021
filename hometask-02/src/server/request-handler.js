@@ -8,6 +8,11 @@ module.exports = (req, res) => {
 
   const { pathname, searchParams } = new URL(url, `https://${host}`);
 
+  let query = {};
+  for (let params of searchParams) {
+    Object.assign(query, {[params.shift()]: params.pop()})
+  }
+
   let body = [];
 
   req
@@ -19,6 +24,6 @@ module.exports = (req, res) => {
     })
     .on('end', () => {
       body = Buffer.concat(body).toString();
-      routes({ ...req, pathname, body, params: searchParams }, res);
+      routes({ ...req, pathname, body, query }, res);
     });
 };
