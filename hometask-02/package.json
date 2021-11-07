@@ -1,0 +1,20 @@
+{
+  "name": "hometask-02",
+  "version": "1.0.0",
+  "description": "http server hometask",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "NodeJS",
+    "PureServer"
+  ],
+  "author": "Konstantin Peschanov",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.14"
+  }
+}
