@@ -9,7 +9,7 @@ module.exports = {
     let response;
     if (!Object.keys(queryData).length) response = services.allGoods();
 
-    const validate = validator(queryData, 'goodsSchema');
+    const validate = validator(queryData, 'filterGoodsSchema');
 
     if (validate.errors) {
       return errorResponse(res, 422, { errors: validate.errors });
@@ -19,17 +19,38 @@ module.exports = {
 
     return successResponse(res, response.length ? 200 : 204, response);
   },
-  getTopPriceController(req, res) {},
-  postTopPriceController(req, res) {},
-  getCommonPriceController(req, res) {},
-  postCommonPriceController(req, res) {},
+  topPriceController(req, res) {
+    let response;
+    if (req.method === 'GET') response = services.findTopPrice();
+    if (req.method === 'POST') {
+      const validate = validator(JSON.parse(req.body), 'goodsSchema');
+
+      if (validate.errors) {
+        return errorResponse(res, 422, { errors: validate.errors });
+      }
+
+      response = services.findTopPrice(JSON.parse(req.body));
+    }
+
+    return successResponse(res, 200, response);
+  },
+  commonPriceController(req, res) {
+    let response;
+    if (req.method === 'GET') response = services.commonPrice();
+    if (req.method === 'POST') {
+      const validate = validator(JSON.parse(req.body), 'goodsSchema');
+
+      if (validate.errors) {
+        return errorResponse(res, 422, { errors: validate.errors });
+      }
+
+      response = services.commonPrice(JSON.parse(req.body));
+    }
+
+    return successResponse(res, 200, response);
+  },
   dataController(req, res) {},
   notFoundController(req, res) {
-    const { message, code } = services.notFound();
-
-    res.statusCode = code;
-    res.write(message);
-
-    return res.end();
+    return errorResponse(res, 404, { message: 'Page not found' });
   }
 }

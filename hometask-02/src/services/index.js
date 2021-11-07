@@ -19,23 +19,18 @@ const filterGoods = query => {
   return result;
 };
 
-const badRequest = () => {
-  return {
-    code: 404,
-    message: 'Bad request'
-  }
-};
-const notFound = () => {
-  return {
-    code: 404,
-    message: 'Page not found'
-  }
-};
+const findTopPrice = (goods = data) => {
+  return findGoodWithHighestValue(goods);
+}
+
+const commonPrice = (goods = data) => {
+  return calculateGoodPrice(goods);
+}
 
 
 module.exports = {
   allGoods,
   filterGoods,
-  badRequest,
-  notFound
+  findTopPrice,
+  commonPrice
 }

@@ -1,22 +1,24 @@
 module.exports = {
-  "type": "object",
-  "properties": {
-    "item": { "type": "string" },
-    "type": { "type": "string" },
-    "weight": {
-      oneOf: [
-        { "type": "string", "pattern": /\d/ },
-        { "type": "number" }
-      ]
+  "type": "array",
+  "items": {
+    "properties": {
+      "item": { "type": "string" },
+      "type": { "type": "string" },
+      "weight": { "type": "number" },
+      "quantity": { "type": "number" },
+      "pricePerKilo": {
+        "type": "string",
+        "pattern": /\$\d/
+      },
+      "pricePerItem": {
+        "type": "string",
+        "pattern": /\$\d/
+      },
     },
-    "quantity": {
-      oneOf: [
-        { "type": "string", "pattern": /\d/ },
-        { "type": "number" }
-      ]
-    },
-    "pricePerKilo": { "type": "string", "pattern": /\$\d/ },
-    "pricePerItem": { "type": "string", "pattern": /\$\d/ },
-  },
-  "additionalProperties": false
-}
+    "anyOf": [
+      { "required": ["item", "type", "weight", "pricePerKilo"] },
+      { "required": ["item", "type", "quantity", "pricePerItem"] }
+    ],
+    "additionalProperties": false
+  }
+};
