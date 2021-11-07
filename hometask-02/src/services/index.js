@@ -4,6 +4,8 @@ const {
   findGoodWithHighestValue,
   calculateGoodPrice
 } = require('./helpers');
+const fs = require("fs");
+const {join} = require("path");
 
 const allGoods = () => data;
 
@@ -27,10 +29,23 @@ const commonPrice = (goods = data) => {
   return calculateGoodPrice(goods);
 }
 
+const dataService = (goods) => {
+  const writeStream = fs.createWriteStream(join(__dirname, '../data.json'), { encoding: 'utf-8' });
+
+  try {
+    writeStream
+      .write(goods);
+
+    return { status: true, message: 'File successful written' };
+  } catch (error) {
+    return { status: false, message: error.message }
+  }
+}
 
 module.exports = {
   allGoods,
   filterGoods,
   findTopPrice,
-  commonPrice
+  commonPrice,
+  dataService
 }

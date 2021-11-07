@@ -1,3 +1,5 @@
+const fs = require('fs');
+const { join } = require('path');
 const services = require('../services');
 const validator = require('../libs/validate');
 const { errorResponse, successResponse } = require('../libs/http-response');
@@ -49,7 +51,20 @@ module.exports = {
 
     return successResponse(res, 200, response);
   },
-  dataController(req, res) {},
+  dataController(req, res) {
+    if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
+    const validate = validator(JSON.parse(req.body), 'goodsSchema');
+
+    if (validate.errors) {
+      return errorResponse(res, 422, { errors: validate.errors });
+    }
+
+    const result = services.dataService(req.body);
+
+    return result.status
+      ? successResponse(res, 200, { message: result.message })
+      : errorResponse(res, 400, { message: result.message });
+  },
   notFoundController(req, res) {
     return errorResponse(res, 404, { message: 'Page not found' });
   }
