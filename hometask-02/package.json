@@ -15,7 +15,13 @@
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^10.0.0",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
   },
   "dependencies": {
     "jsonschema": "^1.4.0"

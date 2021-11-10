@@ -1,11 +1,12 @@
+const fs = require('fs');
+const { join } = require('path');
+
 const data = require('../data.json');
 const {
   filterGoodsByKeyAndValue,
   findGoodWithHighestValue,
   calculateGoodPrice
 } = require('./helpers');
-const fs = require("fs");
-const {join} = require("path");
 
 const allGoods = () => data;
 
