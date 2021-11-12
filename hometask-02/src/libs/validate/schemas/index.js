@@ -1,7 +1,7 @@
 const goodsSchema = require('./goods.schema');
-const filterGoodsSchema = require('./filter-goods.schema');
+const queryGoodsSchema = require('./query-goods.schema');
 
 module.exports = {
   goodsSchema,
-  filterGoodsSchema,
+  queryGoodsSchema,
 }

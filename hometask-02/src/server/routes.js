@@ -1,19 +1,13 @@
-const {
-  filterController,
-  topPriceController,
-  commonPriceController,
-  dataController,
-  notFoundController
-} = require('./controllers');
+const controllers = require('./controllers');
 
 const router = [
-  ['POST', '/data', dataController],
-  ['GET', '/filter', filterController],
-  ['POST', '/filter', filterController],
-  ['GET', '/topprice', topPriceController],
-  ['POST', '/topprice', topPriceController],
-  ['GET', '/commonprice', commonPriceController],
-  ['POST', '/commonprice', commonPriceController]
+  ['POST', '/data', controllers.postDataController],
+  ['GET', '/filter', controllers.getFilterController],
+  ['POST', '/filter', controllers.postFilterController],
+  ['GET', '/topprice', controllers.getTopPriceController],
+  ['POST', '/topprice', controllers.postTopPriceController],
+  ['GET', '/commonprice', controllers.getCommonPriceController],
+  ['POST', '/commonprice', controllers.postCommonPriceController]
 ];
 
 module.exports = (req, res) => {
@@ -23,5 +17,5 @@ module.exports = (req, res) => {
     if (req.method === method && req.pathname === pathname) return controller(req, res);
   }
 
-  return notFoundController(req, res);
+  return controllers.notFoundController(req, res);
 }

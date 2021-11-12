@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"item\": \"orange\",\n    \"weight\": 4\n}",
+					"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,12 +20,22 @@
 					}
 				},
 				"url": {
-					"raw": "{{local-server}}/filter",
+					"raw": "{{local-server}}/filter?item=apple&weight=10",
 					"host": [
 						"{{local-server}}"
 					],
 					"path": [
 						"filter"
+					],
+					"query": [
+						{
+							"key": "item",
+							"value": "apple"
+						},
+						{
+							"key": "weight",
+							"value": "10"
+						}
 					]
 				}
 			},

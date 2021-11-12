@@ -10,12 +10,12 @@ const {
 
 const allGoods = () => data;
 
-const filterGoods = query => {
+const filterGoods = (query, goods = data) => {
   let firstKey = false;
   let result = [];
 
   for (let key of Object.keys(query)) {
-    result = filterGoodsByKeyAndValue(firstKey ? result : data, { [key]: query[key] });
+    result = filterGoodsByKeyAndValue(firstKey ? result : goods, { [key]: query[key] });
     firstKey = true;
   }
 
