@@ -1,3 +1,4 @@
+const { promisify } = require('util');
 const goodsData = require('../data.json');
 const discount = require('../libs/discount');
 const { getGoodValue } = require('../services/helpers/helper2');
@@ -23,10 +24,29 @@ const discountPromise = () => new Promise(resolve => {
   });
 });
 
+const discountPromisify = promisify(discountPromise);
+
 module.exports = {
   calcDiscountWithPromise(goods = goodsData) {
     return Promise.all(
-      goods.map(good => discountPromise()
+      goods.map(good =>
+        discountPromise()
+          .then(discount => {
+            let priceWithDiscount = calcDiscountPrice(
+              getGoodValue(good), discount, checkCoupleDiscounts(good.type)
+            ).toFixed(2);
+
+            priceWithDiscount = `$${ priceWithDiscount }`.replace('.', ',');
+
+            return Object.assign(good, { priceWithDiscount });
+          })
+      )
+    );
+  },
+  calcDiscountWithPromisify(goods = goodsData) {
+    return goods.map(good => {
+      discountPromisify
+        .call(discountPromise())
         .then(discount => {
           let priceWithDiscount = calcDiscountPrice(
             getGoodValue(good), discount, checkCoupleDiscounts(good.type)
@@ -36,13 +56,23 @@ module.exports = {
 
           return Object.assign(good, { priceWithDiscount });
         })
-      )
-    );
+        .catch(err => err)
+    })
   },
-  getPromisify() {},
-  postPromisify() {},
-  getAsync() {},
-  postAsync() {},
-  getCallback() {},
-  postCallback() {}
+  async calcDiscountWithAsync(goods = goodsData) {
+    for (const good of goods) {
+      const discount = await discountPromise();
+
+      let priceWithDiscount = calcDiscountPrice(
+        getGoodValue(good), discount, checkCoupleDiscounts(good.type)
+      ).toFixed(2);
+
+      priceWithDiscount = `$${ priceWithDiscount }`.replace('.', ',');
+
+      Object.assign(good, { priceWithDiscount });
+    }
+
+    return goods;
+  },
+  calcDiscountWithCallback(goods = goodsData) {}
 }
