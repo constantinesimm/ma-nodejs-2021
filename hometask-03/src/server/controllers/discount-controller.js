@@ -25,15 +25,8 @@ module.exports = {
   getPromisify(req, res) {
     discountService
       .calcDiscountWithPromisify()
-      .then(resp => {
-        console.log(resp);
-
-        return successResponse(res, 200, resp)
-      })
-      .catch(error => {
-        console.error(error);
-        return errorResponse(res, 500, error.message)
-      });
+      .then(responseData => successResponse(res, 200, responseData))
+      .catch(error => errorResponse(res, 500, error.message));
   },
   postPromisify(req, res) {
     if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
@@ -42,6 +35,11 @@ module.exports = {
     if (validate.errors) {
       return errorResponse(res, 422, { errors: validate.errors });
     }
+
+    discountService
+      .calcDiscountWithPromisify(JSON.parse(req.body))
+      .then(responseData => successResponse(res, 200, responseData))
+      .catch(error => errorResponse(res, 500, error.message));
   },
   async getAsync(req, res) {
     let responseData;
@@ -72,7 +70,14 @@ module.exports = {
       return errorResponse(res, 500, error);
     }
   },
-  getCallback(req, res) {},
+  getCallback(req, res) {
+    discountService
+      .calcDiscountWithCallback(responseData => {
+        console.log(responseData);
+
+        return successResponse(res, 200, responseData);
+      })
+  },
   postCallback(req, res) {
     if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
     const validate = validator(JSON.parse(req.body), 'goodsSchema');

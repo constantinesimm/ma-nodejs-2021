@@ -1,4 +1,4 @@
-const { promisify } = require('util');
+const util = require('util');
 const goodsData = require('../data.json');
 const discount = require('../libs/discount');
 const { getGoodValue } = require('../services/helpers/helper2');
@@ -23,8 +23,13 @@ const discountPromise = () => new Promise(resolve => {
     return resolve(args.pop());
   });
 });
-
-const discountPromisify = promisify(discountPromise);
+const discountPromisify = () => {
+  return util
+    .promisify(discount)
+    .call(discount)
+    .then(discount => discount)
+    .catch(() => discountPromisify());
+};
 
 module.exports = {
   calcDiscountWithPromise(goods = goodsData) {
@@ -44,9 +49,8 @@ module.exports = {
     );
   },
   calcDiscountWithPromisify(goods = goodsData) {
-    return goods.map(good => {
-      discountPromisify
-        .call(discountPromise())
+    return Promise.all(goods.map(good => {
+      return discountPromisify()
         .then(discount => {
           let priceWithDiscount = calcDiscountPrice(
             getGoodValue(good), discount, checkCoupleDiscounts(good.type)
@@ -56,8 +60,7 @@ module.exports = {
 
           return Object.assign(good, { priceWithDiscount });
         })
-        .catch(err => err)
-    })
+    }))
   },
   async calcDiscountWithAsync(goods = goodsData) {
     for (const good of goods) {
@@ -74,5 +77,8 @@ module.exports = {
 
     return goods;
   },
-  calcDiscountWithCallback(goods = goodsData) {}
+  calcDiscountWithCallback(goods = goodsData) {
+
+  }
 }
+
