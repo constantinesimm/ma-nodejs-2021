@@ -1,9 +1,10 @@
 const { serviceController } = require("../controllers");
 const goodsRoutes = require('./goods-routes');
-//const discountRoutes;
+const discountRoutes = require('./discount-routes');
 
 const routes = [].concat(
-  goodsRoutes/*, discountRoutes*/
+  goodsRoutes,
+  discountRoutes
 );
 
 module.exports = (req, res) => {

@@ -23,6 +23,7 @@
         "code": 80
       }
     ],
-    "semi": "warn"
+    "semi": "warn",
+    "no-restricted-syntax": ["error", "FunctionExpression", "WithStatement"]
   }
 }

@@ -1,7 +1,7 @@
 const generateRandomInteger = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-module.exports = (callback) => {
+const discount = (callback) => {
   const randomDelay = generateRandomInteger(0, 1000);
   setTimeout(() => {
     const randomNumber = generateRandomInteger(1, 50);
@@ -11,3 +11,5 @@ module.exports = (callback) => {
 
   }, randomDelay);
 };
+
+module.exports = discount;

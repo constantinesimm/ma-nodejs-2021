@@ -8,9 +8,9 @@ module.exports = (req, res) => {
 
   const { pathname, searchParams } = new URL(url, `https://${host}`);
 
-  let query = {};
-  for (let params of searchParams) {
-    Object.assign(query, {[params.shift()]: params.pop()})
+  const query = {};
+  for (const params of searchParams) {
+    Object.assign(query, {[params.shift()]: params.pop()});
   }
 
   let body = [];

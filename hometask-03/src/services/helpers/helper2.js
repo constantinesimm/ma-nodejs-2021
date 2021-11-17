@@ -21,5 +21,6 @@ const findGoodWithHighestValue = (goods = jsonData) => {
 
 module.exports = {
   getGoodValue,
+  normalizeGoodPrice,
   findGoodWithHighestValue,
 };
