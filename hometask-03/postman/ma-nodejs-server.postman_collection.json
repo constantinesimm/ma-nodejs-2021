@@ -6,179 +6,369 @@
 	},
 	"item": [
 		{
-			"name": "post /filter",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{local-server}}/filter?item=apple&weight=10",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"filter"
-					],
-					"query": [
-						{
-							"key": "item",
-							"value": "apple"
+			"name": "goods",
+			"item": [
+				{
+					"name": "post /data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n  {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n  {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"pineapple\",\"type\":\"Queen\",\"quantity\":4,\"pricePerItem\":\"$15\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "weight",
-							"value": "10"
+						"url": {
+							"raw": "{{local-server}}/data",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"data"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get /filter",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{local-server}}/filter?item=orange&weight=2",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"filter"
-					],
-					"query": [
-						{
-							"key": "item",
-							"value": "orange"
+					},
+					"response": []
+				},
+				{
+					"name": "post /filter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "weight",
-							"value": "2"
+						"url": {
+							"raw": "{{local-server}}/filter?item=apple&weight=10",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"filter"
+							],
+							"query": [
+								{
+									"key": "item",
+									"value": "apple"
+								},
+								{
+									"key": "weight",
+									"value": "10"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get /topprice",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{local-server}}/topprice",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"topprice"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post /topprice",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{local-server}}/topprice",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"topprice"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post /commonprice",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get /filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/filter?item=orange&weight=2",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"filter"
+							],
+							"query": [
+								{
+									"key": "item",
+									"value": "orange"
+								},
+								{
+									"key": "weight",
+									"value": "2"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{local-server}}/commonprice",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"commonprice"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get /commonprice",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{local-server}}/commonprice",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"commonprice"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post /data",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n  {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n  {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n  {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"pineapple\",\"type\":\"Queen\",\"quantity\":4,\"pricePerItem\":\"$15\"}\n]",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get /topprice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/topprice",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"topprice"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{local-server}}/data",
-					"host": [
-						"{{local-server}}"
-					],
-					"path": [
-						"data"
-					]
+				{
+					"name": "post /topprice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-server}}/topprice",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"topprice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post /commonprice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n    {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n    {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n    {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-server}}/commonprice",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"commonprice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get /commonprice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/commonprice",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"commonprice"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "discount",
+			"item": [
+				{
+					"name": "/promise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/discount/promise",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"promise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/promise",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n  {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n  {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"pineapple\",\"type\":\"Queen\",\"quantity\":4,\"pricePerItem\":\"$15\"},\n  {\"item\":\"pineapple\",\"type\":\"Red Spanish\",\"quantity\":3,\"pricePerItem\":\"$9,99\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-server}}/discount/promise",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"promise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/async",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/discount/async",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"async"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/async",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n  {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n  {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"pineapple\",\"type\":\"Queen\",\"quantity\":4,\"pricePerItem\":\"$15\"},\n  {\"item\":\"pineapple\",\"type\":\"Red Spanish\",\"quantity\":3,\"pricePerItem\":\"$9,99\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-server}}/discount/async",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"async"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/promisify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/discount/promisify",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"promisify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/promisify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n  {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n  {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"pineapple\",\"type\":\"Queen\",\"quantity\":4,\"pricePerItem\":\"$15\"},\n  {\"item\":\"pineapple\",\"type\":\"Red Spanish\",\"quantity\":3,\"pricePerItem\":\"$9,99\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-server}}/discount/promisify",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"promisify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/callback",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-server}}/discount/callback",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"callback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/callback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\"item\":\"apple\",\"type\":\"Fuji\",\"weight\":10,\"pricePerKilo\":\"$3\"},\n  {\"item\":\"orange\",\"type\":\"Clementine\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"watermelon\",\"type\":\"Nova\",\"quantity\":1,\"pricePerItem\":\"$5\"},\n  {\"item\":\"orange\",\"type\":\"Navel\",\"weight\":6,\"pricePerKilo\":\"$7\"},\n  {\"item\":\"pineapple\",\"type\":\"Queen\",\"quantity\":4,\"pricePerItem\":\"$15\"},\n  {\"item\":\"pineapple\",\"type\":\"Red Spanish\",\"quantity\":3,\"pricePerItem\":\"$9,99\"}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-server}}/discount/callback",
+							"host": [
+								"{{local-server}}"
+							],
+							"path": [
+								"discount",
+								"callback"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

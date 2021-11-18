@@ -72,11 +72,7 @@ module.exports = {
   },
   getCallback(req, res) {
     discountService
-      .calcDiscountWithCallback(responseData => {
-        console.log(responseData);
-
-        return successResponse(res, 200, responseData);
-      })
+      .calcDiscountWithCallback(responseData => successResponse(res, 200, responseData))
   },
   postCallback(req, res) {
     if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
@@ -85,5 +81,10 @@ module.exports = {
     if (validate.errors) {
       return errorResponse(res, 422, { errors: validate.errors });
     }
+
+    discountService
+      .calcDiscountWithCallback(responseData =>
+        successResponse(res, 200, responseData), JSON.parse(req.body)
+      )
   }
 }

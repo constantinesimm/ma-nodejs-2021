@@ -17,10 +17,10 @@ const calcDiscountPrice = (goodPrice, discount, discountQuant = 1) => {
 }
 
 const discountPromise = () => new Promise(resolve => {
-  discount((...args) => {
-    if (args.length === 1) return resolve(discountPromise());
+  discount((err, result) => {
+    if (err) return resolve(discountPromise());
 
-    return resolve(args.pop());
+    return resolve(result);
   });
 });
 const discountPromisify = () => {
@@ -30,6 +30,15 @@ const discountPromisify = () => {
     .then(discount => discount)
     .catch(() => discountPromisify());
 };
+const discountCallback = (cb) => {
+  const callback = (err, result) => {
+    if (err) return discountCallback(cb);
+
+    return cb(result);
+  }
+
+  return discount(callback);
+}
 
 module.exports = {
   calcDiscountWithPromise(goods = goodsData) {
@@ -77,8 +86,24 @@ module.exports = {
 
     return goods;
   },
-  calcDiscountWithCallback(goods = goodsData) {
+  calcDiscountWithCallback(callback, goods = goodsData) {
+    let discounts = [];
 
+    for (let good of goods) {
+      discountCallback(discountValue => {
+        let priceWithDiscount = calcDiscountPrice(
+          getGoodValue(good), discountValue, checkCoupleDiscounts(good.type)
+        ).toFixed(2);
+
+        priceWithDiscount = `$${ priceWithDiscount }`.replace('.', ',');
+
+        discounts.push(Object.assign(good, { priceWithDiscount }));
+      });
+    }
+
+    if (discounts.length < goods.length) {
+      setTimeout(() => callback(discounts), 1000)
+    } else return callback(discounts);
   }
 }
 
