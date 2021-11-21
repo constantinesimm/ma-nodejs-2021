@@ -1,4 +1,4 @@
-const { serviceController } = require("../controllers");
+const { serviceController } = require('../controllers');
 const goodsRoutes = require('./goods-routes');
 const discountRoutes = require('./discount-routes');
 

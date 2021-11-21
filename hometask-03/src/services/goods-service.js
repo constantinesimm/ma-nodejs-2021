@@ -1,12 +1,13 @@
 const fs = require('fs');
 const { join } = require('path');
-
 const data = require('../data.json');
+
 const {
   filterGoodsByKeyAndValue,
   findGoodWithHighestValue,
   calculateGoodPrice
 } = require('./helpers');
+const { successMessages } = require('../../config');
 
 const allGoods = () => data;
 
@@ -37,7 +38,7 @@ const dataService = (goods) => {
     writeStream
       .write(goods);
 
-    return { status: true, message: 'File successful written' };
+    return { status: true, message: successMessages.fileUpdated };
   } catch (error) {
     return { status: false, message: error.message }
   }

@@ -1,6 +1,7 @@
 const validator = require('../../libs/validate');
 const { goodsService } = require('../../services');
 const { errorResponse, successResponse } = require('../../libs/http-response');
+const { errorMessages } = require('../../../config');
 
 module.exports = {
   getFilter(req, res) {
@@ -67,7 +68,7 @@ module.exports = {
     return successResponse(res, 200, responseData);
   },
   postData(req, res) {
-    if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
+    if (!req.body) return errorResponse(res, 400, { message: errorMessages.emptyRequestBody });
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {

@@ -3,7 +3,15 @@ const goodsData = require('../data.json');
 const discount = require('../libs/discount');
 const { getGoodValue } = require('../services/helpers/helper2');
 
-const checkCoupleDiscounts = type => type === 'Red Spanish' ? 3 : type === 'Tangerine' ? 2 : 1;
+
+const checkCoupleDiscounts = type => {
+  const coupleDiscountGoods = {
+    'Red Spanish': 3,
+    'Tangerine': 2
+  };
+
+  return coupleDiscountGoods[type] ? coupleDiscountGoods[type] : 1;
+}
 
 const calcDiscountPrice = (goodPrice, discount, discountQuant = 1) => {
   let discountPrice = goodPrice - (goodPrice * (discount / 100));
@@ -23,6 +31,7 @@ const discountPromise = () => new Promise(resolve => {
     return resolve(result);
   });
 });
+
 const discountPromisify = () => {
   return util
     .promisify(discount)

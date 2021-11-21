@@ -8,5 +8,7 @@ module.exports = (target, schema) => {
 
   if (validate.errors.length) {
     return { errors: validate.errors.map(err => err.stack.replace('instance.', '')) }
-  } else return true;
+  }
+
+  return true;
 }

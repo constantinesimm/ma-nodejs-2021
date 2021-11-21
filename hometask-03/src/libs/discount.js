@@ -1,3 +1,5 @@
+const { errorMessages } = require('../../config');
+
 const generateRandomInteger = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -6,7 +8,7 @@ const discount = (callback) => {
   setTimeout(() => {
     const randomNumber = generateRandomInteger(1, 50);
 
-    if (randomNumber > 35) callback(new Error('Something went wrong'));
+    if (randomNumber > 35) callback(new Error(errorMessages.unknownServerError));
     else callback(null, randomNumber);
 
   }, randomDelay);

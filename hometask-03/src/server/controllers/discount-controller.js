@@ -1,6 +1,7 @@
 const validator = require('../../libs/validate');
 const { discountService } = require('../../services');
 const { errorResponse, successResponse } = require('../../libs/http-response');
+const { errorMessages } = require('../../../config');
 
 module.exports = {
   getPromise(req, res) {
@@ -10,7 +11,7 @@ module.exports = {
       .catch(error => errorResponse(res, 500, error))
   },
   postPromise(req, res) {
-    if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
+    if (!req.body) return errorResponse(res, 400, { message: errorMessages.emptyRequestBody });
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {
@@ -29,7 +30,7 @@ module.exports = {
       .catch(error => errorResponse(res, 500, error.message));
   },
   postPromisify(req, res) {
-    if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
+    if (!req.body) return errorResponse(res, 400, { message: errorMessages.emptyRequestBody });
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {
@@ -53,7 +54,7 @@ module.exports = {
     }
   },
   async postAsync(req, res) {
-    if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
+    if (!req.body) return errorResponse(res, 400, { message: errorMessages.emptyRequestBody });
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {
@@ -75,7 +76,7 @@ module.exports = {
       .calcDiscountWithCallback(responseData => successResponse(res, 200, responseData))
   },
   postCallback(req, res) {
-    if (!req.body) return errorResponse(res, 400, { message: 'No data is added' });
+    if (!req.body) return errorResponse(res, 400, { message: errorMessages.emptyRequestBody });
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {
