@@ -13,8 +13,6 @@ function enableGracefulShutdown() {
   process
     .on('SIGINT', exitHandler)
     .on('SIGTERM', exitHandler)
-    .on('SIGUSR1', exitHandler)
-    .on('SIGUSR2', exitHandler)
     .on('uncaughtException', exitHandler)
     .on('unhandledRejection', exitHandler);
 }
