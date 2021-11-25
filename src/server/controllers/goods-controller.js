@@ -1,7 +1,7 @@
 const validator = require('../../libs/validate');
-const { goodsService } = require('../../services');
-const { errorResponse, successResponse } = require('../../libs/http-response');
-const { errorMessages } = require('../../../config');
+const {goodsService} = require('../../services');
+const {errorMessages, successMessages} = require('../../../config');
+const {errorResponse, successResponse} = require('../../libs/http-response');
 
 module.exports = {
   getFilter(req, res) {
@@ -11,7 +11,7 @@ module.exports = {
     const validate = validator(req.query, 'queryGoodsSchema');
 
     if (validate.errors) {
-      return errorResponse(res, 422, { errors: validate.errors });
+      return errorResponse(res, 422, {errors: validate.errors});
     }
 
     responseData = goodsService.filterGoods(req.query);
@@ -26,12 +26,17 @@ module.exports = {
     const validateBody = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validateQuery.errors || validateBody.errors) {
-      let errors = validateQuery.errors ? validateQuery.errors : validateBody.errors;
+      let errors = validateQuery.errors
+        ? validateQuery.errors
+        : validateBody.errors;
 
-      return errorResponse(res, 422, { errors });
+      return errorResponse(res, 422, {errors});
     }
 
-    let responseData = goodsService.filterGoods(req.query, JSON.parse(req.body));
+    let responseData = goodsService.filterGoods(
+      req.query,
+      JSON.parse(req.body),
+    );
 
     return successResponse(res, responseData.length ? 200 : 204, responseData);
   },
@@ -44,7 +49,7 @@ module.exports = {
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {
-      return errorResponse(res, 422, { errors: validate.errors });
+      return errorResponse(res, 422, {errors: validate.errors});
     }
 
     let responseData = goodsService.findTopPrice(JSON.parse(req.body));
@@ -60,25 +65,33 @@ module.exports = {
     const validate = validator(JSON.parse(req.body), 'goodsSchema');
 
     if (validate.errors) {
-      return errorResponse(res, 422, { errors: validate.errors });
+      return errorResponse(res, 422, {errors: validate.errors});
     }
 
     let responseData = goodsService.commonPrice(JSON.parse(req.body));
 
     return successResponse(res, 200, responseData);
   },
-  postData(req, res) {
-    if (!req.body) return errorResponse(res, 400, { message: errorMessages.emptyRequestBody });
-    const validate = validator(JSON.parse(req.body), 'goodsSchema');
+  async postData(req, res) {
+    if (req.headers['content-type'] === 'text/csv') {
+      return successResponse(res, 200, {message: successMessages.fileUpdated});
+    } else {
+      if (!req.body)
+        return errorResponse(res, 400, {
+          message: errorMessages.emptyRequestBody,
+        });
+      const validate = validator(req.body, 'goodsSchema');
 
-    if (validate.errors) {
-      return errorResponse(res, 422, { errors: validate.errors });
+      if (validate.errors) {
+        console.log('validate.errors', validate.errors);
+        return errorResponse(res, 422, {errors: validate.errors});
+      }
+
+      const result = goodsService.dataService(req.body);
+
+      return result.status
+        ? successResponse(res, 200, {message: result.message})
+        : errorResponse(res, 400, {message: result.message});
     }
-
-    const result = goodsService.dataService(req.body);
-
-    return result.status
-      ? successResponse(res, 200, { message: result.message })
-      : errorResponse(res, 400, { message: result.message });
-  }
-}
+  },
+};

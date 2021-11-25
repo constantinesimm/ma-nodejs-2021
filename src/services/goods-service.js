@@ -1,13 +1,12 @@
 const fs = require('fs');
-const { join } = require('path');
+const {join} = require('path');
 const data = require('../data.json');
-
+const {successMessages} = require('../../config');
 const {
   filterGoodsByKeyAndValue,
   findGoodWithHighestValue,
-  calculateGoodPrice
+  calculateGoodPrice,
 } = require('./helpers');
-const { successMessages } = require('../../config');
 
 const allGoods = () => data;
 
@@ -16,7 +15,9 @@ const filterGoods = (query, goods = data) => {
   let result = [];
 
   for (let key of Object.keys(query)) {
-    result = filterGoodsByKeyAndValue(firstKey ? result : goods, { [key]: query[key] });
+    result = filterGoodsByKeyAndValue(firstKey ? result : goods, {
+      [key]: query[key],
+    });
     firstKey = true;
   }
 
@@ -25,29 +26,33 @@ const filterGoods = (query, goods = data) => {
 
 const findTopPrice = (goods = data) => {
   return findGoodWithHighestValue(goods);
-}
+};
 
 const commonPrice = (goods = data) => {
   return calculateGoodPrice(goods);
-}
+};
 
-const dataService = (goods) => {
-  const writeStream = fs.createWriteStream(join(__dirname, '../data.json'), { encoding: 'utf-8' });
+const dataService = goods => {
+  const writeStream = fs.createWriteStream(
+    join(__dirname, '/uploads/data.json'),
+    {
+      encoding: 'utf-8',
+    },
+  );
 
   try {
-    writeStream
-      .write(goods);
+    writeStream.write(goods);
 
-    return { status: true, message: successMessages.fileUpdated };
+    return {status: true, message: successMessages.fileUpdated};
   } catch (error) {
-    return { status: false, message: error.message }
+    return {status: false, message: error.message};
   }
-}
+};
 
 module.exports = {
   allGoods,
   filterGoods,
   findTopPrice,
   commonPrice,
-  dataService
-}
+  dataService,
+};
