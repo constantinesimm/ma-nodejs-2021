@@ -1,7 +1,7 @@
 const util = require('util');
 const latestUploadedData = require('../libs/latest-uploaded-data');
 const discount = require('../libs/discount');
-const {getGoodValue} = require('../services/helpers/helper2');
+const {getGoodValue} = require('./helpers/helper2');
 
 const checkCoupleDiscounts = type => {
   const coupleDiscountGoods = {

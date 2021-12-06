@@ -1,29 +1,39 @@
 {
-  "name": "hometask-02",
-  "version": "1.0.0",
-  "description": "http server hometask",
-  "main": "index.js",
+  "name": "moc-express-app",
+  "version": "2.0.0",
+  "description": "Express.js app - MOC hometask",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js --ignore uploads"
+    "start": "node .bin/www",
+    "dev": "nodemon .bin/www --ignore uploads"
+  },
+  "dependencies": {
+    "ajv": "^8.8.2",
+    "ajv-errors": "^3.0.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-json-validator-middleware": "^2.2.1",
+    "express-jsonschema": "^1.1.6",
+    "jsonschema": "^1.4.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.4.1"
+  },
+  "engines": {
+    "node": "14.16.1",
+    "npm": "8.0.0"
   },
   "keywords": [
     "NodeJS",
     "PureServer"
   ],
   "author": "Konstantin Peschanov",
-  "license": "ISC",
-  "devDependencies": {
-    "dotenv": "^10.0.0",
-    "nodemon": "^2.0.14",
-    "eslint": "^8.1.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.1"
-  },
-  "dependencies": {
-    "jsonschema": "^1.4.0"
-  }
+  "license": "ISC"
 }

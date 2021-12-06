@@ -1,0 +1,86 @@
+#!/usr/bin/env node
+
+const {
+  server: { port }
+} = require('../config');
+
+const app = require('../src/app');
+
+const startServer = () => new Promise(resolve => {
+
+  const server = app.listen(port, () => {
+    console.log('♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦');
+    console.log(`♦♦♦♦♦♦  Server is ready for usage on port - ${port} ♦♦♦♦♦♦`);
+    console.log('♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦');
+
+    // this block of code turns `server.close` into a promise API
+    const originalClose = server.close.bind(server)
+    server.close = () => {
+      return new Promise(resolveClose => {
+        originalClose(resolveClose)
+      })
+    }
+
+    // this ensures that we properly close the server when the program exists
+    setupCloseOnExit(server)
+    resolve(server);
+  })
+
+  server
+    .on('error', error => {
+      onError(error);
+      const originalClose = server.close.bind(server);
+
+          server.close = () => new Promise(resolveClose => originalClose(resolveClose));
+
+          setupCloseOnExit(server);
+    });
+});
+
+startServer();
+
+
+function onError(error) {
+  if (error.syscall !== 'listen') throw error;
+
+  let bind = typeof port === 'string' ? `Pipe ${ port }` : `Port ${ port }`;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`${ bind } requires elevated privileges`);
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(`${ bind } is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+function setupCloseOnExit(server) {
+  async function exitHandler(options = {}) {
+    await server
+      .close()
+      .then(() => console.info('Server successfully closed'))
+      .catch((e) => console.warn('Something went wrong closing the server', e.stack))
+
+    if (options.exit) process.exit()
+  }
+
+  // do something when app is closing
+  process.on('exit', exitHandler)
+
+  // catches ctrl+c event
+  process.on('SIGINT', exitHandler.bind(null, { exit: true }))
+
+  // catches "kill pid" (for example: nodemon restart)
+  process.on('SIGUSR1', exitHandler.bind(null, { exit: true }))
+  process.on('SIGUSR2', exitHandler.bind(null, { exit: true }))
+
+  // catches uncaught exceptions && unhandled rejection
+  process.on('uncaughtException', exitHandler.bind(null, { exit: true }))
+  process.on('unhandledRejection', exitHandler.bind(null, { exit: true }))
+}

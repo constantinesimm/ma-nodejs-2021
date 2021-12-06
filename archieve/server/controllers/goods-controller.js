@@ -1,4 +1,4 @@
-const validator = require('../../libs/validate');
+const validator = require('../../libs/validator');
 const {goodsService, streamService} = require('../../services');
 const {errorMessages, successMessages} = require('../../../config');
 const {errorResponse, successResponse} = require('../../libs/http-response');
@@ -110,7 +110,7 @@ module.exports = {
       const validate = validator(req.body, 'goodsSchema');
 
       if (validate.errors) {
-        console.log('validate.errors', validate.errors);
+        console.log('validator.errors', validate.errors);
         return errorResponse(res, 422, {errors: validate.errors});
       }
 

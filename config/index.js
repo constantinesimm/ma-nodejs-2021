@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { errors, success } = require('./constants/response-messages');
+const {errors, success} = require('./constants/response-messages');
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -11,7 +11,29 @@ const normalizePort = val => {
 };
 
 module.exports = {
-  errorMessages: errors,
-  successMessages: success,
-  port: normalizePort(process.env.PORT || '3000')
-}
+  response: {
+    errorMessages: errors,
+    successMessages: success,
+  },
+  server: {
+    api: {
+      path: `${process.cwd()}/src`,
+      baseUrl: '/api/v1',
+    },
+    directories: ['uploads'],
+    port: normalizePort(process.env.PORT || '3000'),
+  },
+  auth: {
+    basic: {
+      username: 'Masters',
+      password: 'Academy',
+      get authToken() {
+        const authToken = Buffer.from(
+          `${this.username}:${this.password}`,
+        ).toString('base64');
+
+        return `Basic ${authToken}`;
+      },
+    },
+  },
+};
