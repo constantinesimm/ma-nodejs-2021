@@ -1,14 +1,19 @@
 const routes = require('./routes');
-const streamHandlers = require('./stream-handlers');
 
 module.exports = (req, res) => {
-  const allowedContentType = ['text/plain', 'text/csv', 'application/json'];
+  const allowedContentType = [
+    'text/plain',
+    'text/csv',
+    'application/json',
+    undefined,
+  ];
 
   const {
     url,
     headers: {host},
   } = req;
 
+  console.log("req.headers['content-type']", req.headers['content-type']);
   if (!allowedContentType.includes(req.headers['content-type'])) {
     res.statusCode = 415;
 
@@ -22,8 +27,9 @@ module.exports = (req, res) => {
     Object.assign(query, {[params.shift()]: params.pop()});
   }
 
-  if (req.headers['content-type'] === 'text/csv')
-    streamHandlers.csvTransform(req);
+  if (req.headers['content-type'] === 'text/csv' && pathname === '/data') {
+    return routes(req, res);
+  }
 
   let body = [];
 

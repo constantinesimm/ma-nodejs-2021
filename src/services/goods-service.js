@@ -1,16 +1,17 @@
 const fs = require('fs');
 const {join} = require('path');
-const data = require('../data.json');
 const {successMessages} = require('../../config');
 const {
   filterGoodsByKeyAndValue,
   findGoodWithHighestValue,
   calculateGoodPrice,
 } = require('./helpers');
+const latestUploadedData = require('../libs/latest-uploaded-data');
 
-const allGoods = () => data;
+const allGoods = async () => await latestUploadedData();
 
-const filterGoods = (query, goods = data) => {
+const filterGoods = async (query, goods) => {
+  if (goods === undefined) goods = await latestUploadedData();
   let firstKey = false;
   let result = [];
 
@@ -24,11 +25,15 @@ const filterGoods = (query, goods = data) => {
   return result;
 };
 
-const findTopPrice = (goods = data) => {
+const findTopPrice = async goods => {
+  if (goods === undefined) goods = await latestUploadedData();
+
   return findGoodWithHighestValue(goods);
 };
 
-const commonPrice = (goods = data) => {
+const commonPrice = async goods => {
+  if (goods === undefined) goods = await latestUploadedData();
+
   return calculateGoodPrice(goods);
 };
 

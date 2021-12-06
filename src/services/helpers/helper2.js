@@ -1,4 +1,4 @@
-const jsonData = require('../../data.json');
+const latestUploadedData = require('../../libs/latest-uploaded-data');
 
 const normalizeGoodPrice = price =>
   Number(price.replace('$', '').replace(',', '.'));
@@ -11,7 +11,7 @@ const getGoodValue = item => {
   return item[quant] * normalizeGoodPrice(item[price]);
 };
 
-const findGoodWithHighestValue = (goods = jsonData) => {
+const findGoodWithHighestValue = (goods = latestUploadedData()) => {
   const mostExpensiveGood = goods
     .sort((a, b) => getGoodValue(b) - getGoodValue(a))
     .shift();
