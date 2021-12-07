@@ -25,8 +25,8 @@ module.exports = {
   },
   auth: {
     basic: {
-      username: 'Masters',
-      password: 'Academy',
+      username: process.env.CREDENTIALS_USERNAME,
+      password: process.env.CREDENTIALS_PASSWORD,
       get authToken() {
         const authToken = Buffer.from(
           `${this.username}:${this.password}`,
