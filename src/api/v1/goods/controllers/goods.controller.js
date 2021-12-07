@@ -1,5 +1,8 @@
 const {HttpError} = require(`${process.cwd()}/src/libs`);
 const {goodsService, streamService} = require('../services');
+const {
+  response: {successMessages},
+} = require(`${process.cwd()}/config`);
 
 module.exports = {
   getFilter: async (req, res, next) => {
@@ -64,11 +67,18 @@ module.exports = {
   },
   postData: async (req, res, next) => {
     try {
-      const response = goodsService.dataService(req.body);
+      let response;
+      if (!req.parseCsvAction) {
+        response = await streamService(req);
 
-      return response.status
-        ? res.json({message: response.message})
-        : next(new HttpError(400, response.message));
+        if (response) return res.json({message: successMessages.files.created});
+      } else {
+        response = goodsService.dataService(req.body);
+
+        return response.status
+          ? res.json({message: response.message})
+          : next(new HttpError(400, response.message));
+      }
     } catch (error) {
       next(new HttpError(400, error.message));
     }

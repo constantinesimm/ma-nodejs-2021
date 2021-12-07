@@ -1,5 +1,7 @@
 const goodsRouter = require('express').Router();
 const {goodsController} = require('../controllers');
+const multer = require('multer');
+const upload = multer();
 const {
   validator: {
     validate,
@@ -28,10 +30,6 @@ goodsRouter
   .get(goodsController.getCommonPrice)
   .post(validate({body: bodyGoodsSchema}), goodsController.postCommonPrice);
 
-goodsRouter.post(
-  '/data',
-  validate({body: bodyGoodsSchema}),
-  goodsController.postData,
-);
+goodsRouter.post('/data', upload.single('file'), goodsController.postData);
 
 module.exports = goodsRouter;

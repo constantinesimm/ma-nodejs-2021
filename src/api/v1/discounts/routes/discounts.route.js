@@ -1,23 +1,30 @@
 const discountRoutes = require('express').Router();
+const {discountsController} = require('../controllers');
+const {
+  validator: {
+    validate,
+    schemas: {bodyGoodsSchema},
+  },
+} = require(`${process.cwd()}/src/libs`);
 
 discountRoutes
   .route('/promise')
-  .get((req, res, next) => res.json({message: 'get promise'}))
-  .post((req, res, next) => res.json({message: 'post promise'}));
+  .get(discountsController.getPromise)
+  .post(validate({body: bodyGoodsSchema}), discountsController.postPromise);
 
 discountRoutes
   .route('/promisify')
-  .get((req, res, next) => res.json({message: 'get promisify'}))
-  .post((req, res, next) => res.json({message: 'post promisify'}));
+  .get(discountsController.getPromisify)
+  .post(validate({body: bodyGoodsSchema}), discountsController.postPromisify);
 
 discountRoutes
   .route('/async')
-  .get((req, res, next) => res.json({message: 'get async'}))
-  .post((req, res, next) => res.json({message: 'post async'}));
+  .get(discountsController.getAsync)
+  .post(validate({body: bodyGoodsSchema}), discountsController.postAsync);
 
 discountRoutes
   .route('/callback')
-  .get((req, res, next) => res.json({message: 'get callback'}))
-  .post((req, res, next) => res.json({message: 'post callback'}));
+  .get(discountsController.getCallback)
+  .post(validate({body: bodyGoodsSchema}), discountsController.postCallback);
 
 module.exports = discountRoutes;

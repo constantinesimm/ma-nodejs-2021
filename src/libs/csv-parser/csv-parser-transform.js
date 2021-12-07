@@ -29,7 +29,6 @@ class CsvParserTransform extends Transform {
 
   _transform(chunk, encoding, callback) {
     let rawData = chunk.toString();
-
     //concat chunk with invalid line
     if (this._invalidLine) {
       rawData = this._invalidLine + rawData;

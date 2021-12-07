@@ -6,11 +6,7 @@ const {notFoundMiddleware, errorMiddleware} = require('./middleware');
 const app = express();
 
 app.use(bodyParser.json(), bodyParser.urlencoded({extended: true}));
-app.use((req, res, next) => {
-  console.log(req.query, 'test');
-  console.log(JSON.stringify(req.body, null, 4));
-  next();
-});
+
 /**
  * Add API routes
  */
