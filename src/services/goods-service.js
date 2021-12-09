@@ -39,7 +39,7 @@ const commonPrice = async goods => {
 
 const dataService = goods => {
   const writeStream = fs.createWriteStream(
-    join(__dirname, '/uploads/data.json'),
+    join(__dirname, '../../uploads/data.json'),
     {
       encoding: 'utf-8',
     },
