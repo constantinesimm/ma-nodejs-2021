@@ -18,30 +18,27 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+server
+  .listen(port)
+  .on('error', onError)
+  .on('listening', onListening);
 
 /**
  * Event listener for HTTP server "error" event.
  */
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+  if (error.syscall !== 'listen') throw error;
 
-  let bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = `${ typeof port === 'string' ? 'Pipe' : 'Port'} ${ port }`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(`${ bind } requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error(`${ bind } is already in use`);
       process.exit(1);
       break;
     default:
@@ -54,10 +51,10 @@ function onError(error) {
  */
 function onListening() {
   let addr = server.address();
-  let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  let bind = `${ typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port }`;
 
   console.log('♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦');
-  console.log(`♦♦♦♦♦♦  Server is ready for usage on port - ${port} ♦♦♦♦♦♦`);
+  console.log(`♦♦♦♦♦♦  Server is ready for usage on ${ bind } ♦♦♦♦♦♦`);
   console.log('♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦');
 
   enableGracefulShutdown();
@@ -72,13 +69,14 @@ function enableGracefulShutdown() {
     };
 
         // catches ctrl+c event
-        process.on('SIGINT', exitHandler)
+        process
+          .on('SIGINT', exitHandler)
 
         // catches "kill pid" (for example: nodemon restart)
-        process.on('SIGUSR1', exitHandler)
-        process.on('SIGUSR2', exitHandler)
+          .on('SIGUSR1', exitHandler)
+          .on('SIGUSR2', exitHandler)
 
         // catches uncaught exceptions && unhandled rejection
-        process.on('uncaughtException', exitHandler)
-        process.on('unhandledRejection', exitHandler)
+          .on('uncaughtException', exitHandler)
+          .on('unhandledRejection', exitHandler);
   }

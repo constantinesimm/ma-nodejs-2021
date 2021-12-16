@@ -1,26 +1,29 @@
+/* eslint-disable no-return-await */
+/* eslint-disable import/no-dynamic-require */
 const fs = require('fs');
-
-const {
-  response: {successMessages},
-} = require(`${process.cwd()}/config`);
-
-const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
 const {
   filterGoodsByKeyAndValue,
   findGoodWithHighestValue,
   calculateGoodPrice,
 } = require('./helpers');
 
+const {
+  response: {successMessages},
+} = require(`${process.cwd()}/config`);
+const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
+
+const getProductsList = async goods => goods || await latestUploadedFile();
+
 const allGoodsList = async () => await latestUploadedFile();
 
 const filterGoodsList = async (query, goods) => {
-  if (!goods) goods = await latestUploadedFile();
+  const products = await getProductsList(goods);
 
   let firstKey = false;
   let result = [];
 
-  for (let key of Object.keys(query)) {
-    result = filterGoodsByKeyAndValue(firstKey ? result : goods, {
+  for (const key of Object.keys(query)) {
+    result = filterGoodsByKeyAndValue(firstKey ? result : products, {
       [key]: query[key],
     });
     firstKey = true;
@@ -30,15 +33,15 @@ const filterGoodsList = async (query, goods) => {
 };
 
 const findTopPrice = async goods => {
-  if (!goods) goods = await latestUploadedFile();
+  const products = await getProductsList(goods);
 
-  return findGoodWithHighestValue(goods);
+  return findGoodWithHighestValue(products);
 };
 
 const commonPrice = async goods => {
-  if (!goods) goods = await latestUploadedFile();
+  const products = await getProductsList(goods);
 
-  return calculateGoodPrice(goods);
+  return calculateGoodPrice(products);
 };
 
 const dataService = goods => {

@@ -1,13 +1,15 @@
+/* eslint-disable consistent-return */
+/* eslint-disable import/no-dynamic-require */
 const {HttpError} = require(`${process.cwd()}/src/libs`);
-const {goodsService, streamService} = require('../services');
 const {
   response: {successMessages},
 } = require(`${process.cwd()}/config`);
+const {goodsService, streamService} = require('../services');
 
 module.exports = {
   getFilter: async (req, res, next) => {
     try {
-      let response = Object.keys(req.query).length
+      const response = Object.keys(req.query).length
         ? await goodsService.filterGoodsList(req.query)
         : await goodsService.allGoodsList();
 
@@ -35,7 +37,7 @@ module.exports = {
 
       return res.json(response);
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   postTopPrice: async (req, res, next) => {
@@ -44,7 +46,7 @@ module.exports = {
 
       return res.json(response);
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   getCommonPrice: async (req, res, next) => {
@@ -53,7 +55,7 @@ module.exports = {
 
       return res.json(response);
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   postCommonPrice: async (req, res, next) => {
@@ -62,25 +64,22 @@ module.exports = {
 
       return res.json(response);
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   postData: async (req, res, next) => {
     try {
-      let response;
       if (!req.parseCsvAction) {
-        response = await streamService(req);
-
-        if (response) return res.json({message: successMessages.files.created});
+        if (await streamService(req)) return res.json({message: successMessages.files.created});
       } else {
-        response = goodsService.dataService(req.body);
+        const response = goodsService.dataService(req.body);
 
         return response.status
           ? res.json({message: response.message})
           : next(new HttpError(400, response.message));
       }
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
 };

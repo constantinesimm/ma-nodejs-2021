@@ -1,4 +1,8 @@
-const {latestUploadedFile} = require(`${process.cwd()}/src/libs`);
+/* eslint-disable no-return-await */
+/* eslint-disable import/no-dynamic-require */
+const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
+
+const getProductsList = async goods => goods || await latestUploadedFile();
 
 const normalizeGoodPrice = price =>
   Number(price.replace('$', '').replace(',', '.'));
@@ -13,9 +17,9 @@ const getGoodValue = item => {
 
 const findGoodWithHighestValue = async goods => {
   try {
-    if (!goods) goods = await latestUploadedFile();
+    const products = await getProductsList(goods);
 
-    const mostExpensiveGood = goods
+    const mostExpensiveGood = products
       .sort((a, b) => getGoodValue(b) - getGoodValue(a))
       .shift();
 

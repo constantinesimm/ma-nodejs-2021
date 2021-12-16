@@ -1,7 +1,7 @@
+/* eslint-disable import/no-dynamic-require */
 const goodsRouter = require('express').Router();
 const {goodsController} = require('../controllers');
-const multer = require('multer');
-const upload = multer();
+
 const {
   validator: {
     validate,
@@ -30,6 +30,6 @@ goodsRouter
   .get(goodsController.getCommonPrice)
   .post(validate({body: bodyGoodsSchema}), goodsController.postCommonPrice);
 
-goodsRouter.post('/data', upload.single('file'), goodsController.postData);
+goodsRouter.post('/data', goodsController.postData);
 
 module.exports = goodsRouter;

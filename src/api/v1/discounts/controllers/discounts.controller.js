@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+// eslint-disable-next-line import/no-dynamic-require
 const {HttpError} = require(`${process.cwd()}/src/libs`);
 const discountsService = require('../services/discounts.service');
 
@@ -32,7 +34,7 @@ module.exports = {
 
       return res.json(response);
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   postAsync: async (req, res, next) => {
@@ -41,7 +43,7 @@ module.exports = {
 
       return res.json(response);
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   getCallback: async (req, res, next) => {
@@ -50,7 +52,7 @@ module.exports = {
         res.json(response),
       );
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
   postCallback: async (req, res, next) => {
@@ -60,7 +62,7 @@ module.exports = {
         req.body,
       );
     } catch (error) {
-      next(new HttpError(400, error.message));
+      return next(new HttpError(400, error.message));
     }
   },
 };

@@ -9,6 +9,7 @@ app.use(bodyParser.json(), bodyParser.urlencoded({extended: true}));
 
 /**
  * Add API routes
+ * details is written in setApplicationRoutes function
  */
 setApplicationRoutes(app, 'api');
 

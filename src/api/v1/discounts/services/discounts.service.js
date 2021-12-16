@@ -1,7 +1,21 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-shadow */
+/* eslint-disable no-return-await */
+/* eslint-disable import/no-dynamic-require */
 const util = require('util');
 const {discount} = require('../../../../utils');
 const {getGoodValue} = require('../../goods/services/helpers/helper2');
+
 const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
+
+const getProductsList = async goods => goods || await latestUploadedFile();
+
+const formatPriceWithDiscount = price => `$${price}`.replace('.', ',');
 
 const checkCoupleDiscounts = type => {
   const coupleDiscountGoods = {
@@ -33,7 +47,7 @@ const discountPromise = () =>
   });
 
 const discountPromisify = () => {
-  return util
+  util
     .promisify(discount)
     .call(discount)
     .then(discount => discount)
@@ -52,59 +66,54 @@ const discountCallback = cb => {
 
 module.exports = {
   async calcDiscountWithPromise(goods) {
-    if (!goods) goods = await latestUploadedFile();
+    const products = await getProductsList(goods);
 
     return Promise.all(
-      goods.map(good =>
+      products.map(good =>
         discountPromise().then(discount => {
-          let priceWithDiscount = calcDiscountPrice(
+          const priceWithDiscount = calcDiscountPrice(
             getGoodValue(good),
             discount,
             checkCoupleDiscounts(good.type),
           ).toFixed(2);
 
-          priceWithDiscount = `$${priceWithDiscount}`.replace('.', ',');
-
-          return Object.assign(good, {priceWithDiscount});
+          Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)});
         }),
       ),
     );
   },
   async calcDiscountWithPromisify(goods) {
-    if (!goods) goods = await latestUploadedFile();
+    const products = await getProductsList(goods);
 
     return Promise.all(
-      goods.map(good => {
-        return discountPromisify().then(discount => {
-          let priceWithDiscount = calcDiscountPrice(
+      products.map(good => {
+        discountPromisify()
+        .then(discount => {
+          const priceWithDiscount = calcDiscountPrice(
             getGoodValue(good),
             discount,
             checkCoupleDiscounts(good.type),
           ).toFixed(2);
 
-          priceWithDiscount = `$${priceWithDiscount}`.replace('.', ',');
-
-          return Object.assign(good, {priceWithDiscount});
+          Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)});
         });
       }),
     );
   },
   async calcDiscountWithAsync(goods) {
     try {
-      if (!goods) goods = await latestUploadedFile();
+      const products = await getProductsList(goods);
 
-      for (const good of goods) {
+      for (const good of products) {
         const discount = await discountPromise();
 
-        let priceWithDiscount = calcDiscountPrice(
+        const priceWithDiscount = calcDiscountPrice(
           getGoodValue(good),
           discount,
           checkCoupleDiscounts(good.type),
         ).toFixed(2);
 
-        priceWithDiscount = `$${priceWithDiscount}`.replace('.', ',');
-
-        Object.assign(good, {priceWithDiscount});
+        Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)});
       }
 
       return goods;
@@ -113,21 +122,18 @@ module.exports = {
     }
   },
   async calcDiscountWithCallback(callback, goods) {
-    let discounts = [];
+    const discounts = [];
+    const products = await getProductsList(goods);
 
-    if (!goods) goods = await latestUploadedFile();
-
-    for (let good of goods) {
+    for (const good of products) {
       discountCallback(discountValue => {
-        let priceWithDiscount = calcDiscountPrice(
+        const priceWithDiscount = calcDiscountPrice(
           getGoodValue(good),
           discountValue,
           checkCoupleDiscounts(good.type),
         ).toFixed(2);
 
-        priceWithDiscount = `$${priceWithDiscount}`.replace('.', ',');
-
-        discounts.push(Object.assign(good, {priceWithDiscount}));
+        discounts.push(Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)}));
       });
     }
 

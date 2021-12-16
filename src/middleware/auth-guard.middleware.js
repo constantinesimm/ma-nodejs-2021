@@ -6,13 +6,13 @@ const {HttpError} = require('../libs');
 
 const authGuardMiddleware = {
   onlyPublicRoute: (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    const authHeader = req.headers.authorization;
 
     if (authHeader) next(new HttpError(403, errorMessages['403'].public));
     next();
   },
   onlyPrivateRoute: (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    const authHeader = req.headers.authorization;
 
     if (!authHeader || authHeader !== basic.authToken)
       next(new HttpError(403, errorMessages['403'].private));

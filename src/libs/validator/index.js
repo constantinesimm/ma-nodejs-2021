@@ -15,15 +15,15 @@ const {validate} = new Validator({
 
 const validateErrorsHandler = (error, res) => {
   if (error instanceof ValidationError) {
-    let errors = {};
+    const errors = {};
     const ignoredKeywords = ['oneOf'];
 
-    for (let key of Object.keys(error.validationErrors)) {
+    for (const key of Object.keys(error.validationErrors)) {
       errors[key] = [];
 
       error.validationErrors[key].forEach(err => {
         if (!ignoredKeywords.includes(err.keyword)) {
-          let reasonKey = Object.keys(err.params).shift();
+          const reasonKey = Object.keys(err.params).shift();
 
           errors[key].push({
             reason: `${reasonKey} - ${err.params[reasonKey]}`,
