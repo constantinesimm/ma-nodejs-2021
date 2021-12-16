@@ -12,10 +12,22 @@ const readDirSync = path => fs.readdirSync(path);
 
 
 /**
- * Simple function for concat all routes one time when app is started
- * Current function is walk recursive in modules directory(fn argument - modulesPath) as start dir
- * concats processed dirs and find directory "routes". Than getting all files than contains *.route.js and setup api-endpoint
- * Endpoint name is - baseURL/API-path/api-version/module-name/routes/routes-file-name
+ * Function Description
+ * Setup api-routes pattern
+ * Concats modules directory and created API-endpoints that app is listening.
+ * On app startup function walk recursive in modules path directory(modules path is required argument).
+ * Finding "routes" dir in each module and getting all files than contains *.route.js
+ * Created endpoint name - <modules path>/<api-version>/<module-name>/<router.routes endpoint>
+ * if routes path contains more than 1 route file api-url added route filename
+ *
+ * Example:
+ * http://localhost:5000/api/v1/goods/filter
+ * where:
+ * baseURL - http://localhost:5000
+ * /api - modules path
+ * /v1 - api version
+ * /goods - module
+ * /filter - router route endpoint
  */
 const setApplicationRoutes = (app, modulesPath) => {
   const apiVersions = readDirSync(`${api.path}/${modulesPath}`);
