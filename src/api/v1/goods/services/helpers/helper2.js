@@ -1,8 +1,6 @@
-/* eslint-disable no-return-await */
-/* eslint-disable import/no-dynamic-require */
 const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
 
-const getProductsList = async goods => goods || await latestUploadedFile();
+const getProductsList = async goods => goods || (await latestUploadedFile());
 
 const normalizeGoodPrice = price =>
   Number(price.replace('$', '').replace(',', '.'));

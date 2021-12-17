@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
 const discountRoutes = require('express').Router();
 const {discountsController} = require('../controllers');
 
