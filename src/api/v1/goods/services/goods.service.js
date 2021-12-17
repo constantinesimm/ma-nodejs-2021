@@ -1,5 +1,3 @@
-/* eslint-disable no-return-await */
-/* eslint-disable import/no-dynamic-require */
 const fs = require('fs');
 const {
   filterGoodsByKeyAndValue,
@@ -12,7 +10,7 @@ const {
 } = require(`${process.cwd()}/config`);
 const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
 
-const getProductsList = async goods => goods || await latestUploadedFile();
+const getProductsList = async goods => goods || (await latestUploadedFile());
 
 const allGoodsList = async () => await latestUploadedFile();
 

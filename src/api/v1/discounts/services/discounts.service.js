@@ -1,19 +1,11 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-await-in-loop */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
-/* eslint-disable no-return-await */
-/* eslint-disable import/no-dynamic-require */
 const util = require('util');
 const {discount} = require('../../../../utils');
 const {getGoodValue} = require('../../goods/services/helpers/helper2');
 
 const {latestUploadedFile} = require(`${process.cwd()}/src/utils`);
 
-const getProductsList = async goods => goods || await latestUploadedFile();
+const getProductsList = async goods =>
+  goods ? goods : await latestUploadedFile();
 
 const formatPriceWithDiscount = price => `$${price}`.replace('.', ',');
 
@@ -26,12 +18,16 @@ const checkCoupleDiscounts = type => {
   return coupleDiscountGoods[type] ? coupleDiscountGoods[type] : 1;
 };
 
-const calcDiscountPrice = (goodPrice, discount, discountQuant = 1) => {
-  let discountPrice = goodPrice - goodPrice * (discount / 100);
+const calcDiscountPrice = (goodPrice, discountVal, discountQuant = 1) => {
+  let discountPrice = goodPrice - goodPrice * (discountVal / 100);
   --discountQuant;
 
   if (discountQuant !== 0) {
-    discountPrice = calcDiscountPrice(discountPrice, discount, discountQuant);
+    discountPrice = calcDiscountPrice(
+      discountPrice,
+      discountVal,
+      discountQuant,
+    );
   }
 
   return discountPrice;
@@ -47,10 +43,10 @@ const discountPromise = () =>
   });
 
 const discountPromisify = () => {
-  util
+  return util
     .promisify(discount)
     .call(discount)
-    .then(discount => discount)
+    .then(discountVal => discountVal)
     .catch(() => discountPromisify());
 };
 
@@ -70,14 +66,16 @@ module.exports = {
 
     return Promise.all(
       products.map(good =>
-        discountPromise().then(discount => {
+        discountPromise().then(discountValue => {
           const priceWithDiscount = calcDiscountPrice(
             getGoodValue(good),
-            discount,
+            discountValue,
             checkCoupleDiscounts(good.type),
           ).toFixed(2);
 
-          Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)});
+          return Object.assign(good, {
+            priceWithDiscount: formatPriceWithDiscount(priceWithDiscount),
+          });
         }),
       ),
     );
@@ -86,18 +84,19 @@ module.exports = {
     const products = await getProductsList(goods);
 
     return Promise.all(
-      products.map(good => {
-        discountPromisify()
-        .then(discount => {
+      products.map(good =>
+        discountPromisify().then(discountVal => {
           const priceWithDiscount = calcDiscountPrice(
             getGoodValue(good),
-            discount,
+            discountVal,
             checkCoupleDiscounts(good.type),
           ).toFixed(2);
 
-          Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)});
-        });
-      }),
+          return Object.assign(good, {
+            priceWithDiscount: formatPriceWithDiscount(priceWithDiscount),
+          });
+        }),
+      ),
     );
   },
   async calcDiscountWithAsync(goods) {
@@ -105,18 +104,20 @@ module.exports = {
       const products = await getProductsList(goods);
 
       for (const good of products) {
-        const discount = await discountPromise();
+        const discountVal = await discountPromise();
 
         const priceWithDiscount = calcDiscountPrice(
           getGoodValue(good),
-          discount,
+          discountVal,
           checkCoupleDiscounts(good.type),
         ).toFixed(2);
 
-        Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)});
+        return Object.assign(good, {
+          priceWithDiscount: formatPriceWithDiscount(priceWithDiscount),
+        });
       }
 
-      return goods;
+      return products;
     } catch (error) {
       return error;
     }
@@ -133,11 +134,15 @@ module.exports = {
           checkCoupleDiscounts(good.type),
         ).toFixed(2);
 
-        discounts.push(Object.assign(good, {priceWithDiscount: formatPriceWithDiscount(priceWithDiscount)}));
+        discounts.push(
+          Object.assign(good, {
+            priceWithDiscount: formatPriceWithDiscount(priceWithDiscount),
+          }),
+        );
       });
     }
 
-    if (discounts.length < goods.length) {
+    if (discounts.length < products.length) {
       setTimeout(() => callback(discounts), 1000);
     } else return callback(discounts);
   },

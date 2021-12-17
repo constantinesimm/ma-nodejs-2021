@@ -1,15 +1,12 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 const fs = require('fs');
 const {
-  server: { api }
+  server: {api},
 } = require('../../config');
 const {
   authGuardMiddleware: {onlyPrivateRoute},
 } = require('../middleware');
 
 const readDirSync = path => fs.readdirSync(path);
-
 
 /**
  * Function Description

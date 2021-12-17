@@ -1,6 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable prefer-promise-reject-errors */
 const {promises: pfs} = require('fs');
 const {join} = require('path');
 
