@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "83c100d7-9036-43f8-8840-81b106ac2d94",
+		"_postman_id": "e8fa9463-9015-4b8c-98b3-d71effe4e12c",
 		"name": "ma-nodejs-server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -348,6 +348,21 @@
 						{
 							"name": "/promise",
 							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Academy",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Masters",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
