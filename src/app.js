@@ -1,9 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {setApplicationRoutes, setupDirectories} = require('./utils');
+const {
+  setApplicationRoutes,
+  setupDirectories,
+  createPostgreDatabase,
+} = require('./utils');
 const {notFoundMiddleware, errorMiddleware} = require('./middleware');
 
 const app = express();
+
+/**
+ * Setup Databases
+ */
+(async () => await createPostgreDatabase())();
 
 app.use(bodyParser.json(), bodyParser.urlencoded({extended: true}));
 

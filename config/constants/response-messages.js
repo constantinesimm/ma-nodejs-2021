@@ -14,6 +14,11 @@ module.exports = {
       created: 'Goods file successful created',
       updated: 'File successful updated',
     },
+    db: {
+      created: 'Products successful created',
+      updated: 'Product successful updated',
+      removed: 'Product successful removed',
+    },
   },
   info: {},
 };

@@ -23,7 +23,7 @@ const readDirSync = path => fs.readdirSync(path);
  * baseURL - http://localhost:5000
  * /api - modules path
  * /v1 - api version
- * /goods - module
+ * /products - module
  * /filter - router route endpoint
  */
 const setApplicationRoutes = (app, modulesPath) => {

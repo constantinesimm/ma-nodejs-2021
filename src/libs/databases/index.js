@@ -1,1 +1,5 @@
-module.exports = {};
+const postgreClient = require('./postgresql');
+
+module.exports = {
+  postgreClient,
+};

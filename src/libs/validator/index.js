@@ -14,6 +14,7 @@ const {validate} = new Validator({
 });
 
 const validateErrorsHandler = (error, res) => {
+  console.log('error', error);
   if (error instanceof ValidationError) {
     const errors = {};
     const ignoredKeywords = ['oneOf'];

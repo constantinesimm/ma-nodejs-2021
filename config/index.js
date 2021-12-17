@@ -1,5 +1,5 @@
-/* eslint-disable no-restricted-syntax */
 require('dotenv').config();
+const url = require('url');
 const {errors, success} = require('./constants/response-messages');
 
 const normalizePort = val => {
@@ -9,6 +9,18 @@ const normalizePort = val => {
   if (port >= 0) return port;
 
   return false;
+};
+
+const getPostgreConfig = connectionString => {
+  const {auth, port, hostname, pathname} = url.parse(connectionString);
+
+  return {
+    username: auth ? auth.split(':').shift() : null,
+    password: auth ? auth.split(':').pop() : null,
+    host: hostname,
+    port,
+    database: pathname ? pathname.replace('/', '') : null,
+  };
 };
 
 module.exports = {
@@ -23,6 +35,16 @@ module.exports = {
     },
     directories: ['uploads'],
     port: normalizePort(process.env.PORT || '3000'),
+  },
+  database: {
+    postgre: {
+      get superUserDB() {
+        return getPostgreConfig(process.env.POSTGRESQL_URL_SUPER);
+      },
+      get dbCredentials() {
+        return getPostgreConfig(process.env.POSTGRESQL_URL);
+      },
+    },
   },
   auth: {
     basic: {
