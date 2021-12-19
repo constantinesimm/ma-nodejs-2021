@@ -20,10 +20,21 @@
     "max-len": [
       "warn",
       {
-        "code": 80
+        "code": 125
       }
     ],
     "semi": "warn",
-    "no-restricted-syntax": ["error", "FunctionExpression", "WithStatement"]
+    "no-restricted-syntax": [
+      "error",
+      "WithStatement"
+    ],
+    "import/no-dynamic-require": "off",
+    "no-return-await": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-await-in-loop": "off",
+    "consistent-return": "off",
+    "prefer-promise-reject-errors": "off",
+    "global-require": "off"
   }
 }
