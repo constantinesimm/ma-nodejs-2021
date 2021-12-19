@@ -42,9 +42,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/data",
+									"raw": "{{local-server}}{{api-v1}}/goods/data",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -75,9 +75,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/filter?item=orange&weight=2",
+									"raw": "{{local-server}}{{api-v1}}/goods/filter?type=Bergamot",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -85,12 +85,8 @@
 									],
 									"query": [
 										{
-											"key": "item",
-											"value": "orange"
-										},
-										{
-											"key": "weight",
-											"value": "2"
+											"key": "type",
+											"value": "Bergamot"
 										}
 									]
 								}
@@ -127,9 +123,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/filter?item=apple&type=Fuji&weight=10&pricePerKilo=$3",
+									"raw": "{{local-server}}{{api-v1}}/goods/filter?item=apple&type=Fuji&weight=10&pricePerKilo=$3",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -178,9 +174,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/topprice",
+									"raw": "{{local-server}}{{api-v1}}/goods/topprice",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -220,9 +216,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/topprice",
+									"raw": "{{local-server}}{{api-v1}}/goods/topprice",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -262,9 +258,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/commonprice",
+									"raw": "{{local-server}}{{api-v1}}/goods/commonprice",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -295,9 +291,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/goods/commonprice",
+									"raw": "{{local-server}}{{api-v1}}/goods/commonprice",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"goods",
@@ -333,9 +329,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/promise",
+									"raw": "{{local-server}}{{api-v1}}/discounts/promise",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -375,9 +371,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/promise",
+									"raw": "{{local-server}}{{api-v1}}/discounts/promise",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -408,9 +404,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/async",
+									"raw": "{{local-server}}{{api-v1}}/discounts/async",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -450,9 +446,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/async",
+									"raw": "{{local-server}}{{api-v1}}/discounts/async",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -483,9 +479,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/promisify",
+									"raw": "{{local-server}}{{api-v1}}/discounts/promisify",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -525,9 +521,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/promisify",
+									"raw": "{{local-server}}{{api-v1}}/discounts/promisify",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -558,9 +554,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/callback",
+									"raw": "{{local-server}}{{api-v1}}/discounts/callback",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
@@ -600,13 +596,175 @@
 									}
 								},
 								"url": {
-									"raw": "{{local-server}}{{api-version}}/discounts/callback",
+									"raw": "{{local-server}}{{api-v1}}/discounts/callback",
 									"host": [
-										"{{local-server}}{{api-version}}"
+										"{{local-server}}{{api-v1}}"
 									],
 									"path": [
 										"discounts",
 										"callback"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "api.v2",
+			"item": [
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "/create",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Academy",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Masters",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Mini Piccolo\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 46,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$8\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Satsuma\",\n        \"measure\": \"weight\",\n        \"measureValue\": 19,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"McIntosh\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Allsweet\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 8,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$8\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Florida Giant\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 8,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Fuji\",\n        \"measure\": \"weight\",\n        \"measureValue\": 2,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4,99\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Carolina Cross #183\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 30,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$12\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Granny\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Naruto\",\n        \"measure\": \"weight\",\n        \"measureValue\": 5,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"McIntosh\",\n        \"measure\": \"weight\",\n        \"measureValue\": 16,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Bergamot\",\n        \"measure\": \"weight\",\n        \"measureValue\": 2,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Naruto\",\n        \"measure\": \"weight\",\n        \"measureValue\": 19,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Van\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Cosmic Crisp\",\n        \"measure\": \"weight\",\n        \"measureValue\": 7,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"McIntosh\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Red\",\n        \"measure\": \"weight\",\n        \"measureValue\": 6,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Golden Midget\",\n        \"measure\": \"weight\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Fuji\",\n        \"measure\": \"weight\",\n        \"measureValue\": 14,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Carolina Cross #183\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 44,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Clementine\",\n        \"measure\": \"weight\",\n        \"measureValue\": 18,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Yellow Petite\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 30,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Jonagold\",\n        \"measure\": \"weight\",\n        \"measureValue\": 17,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Red\",\n        \"measure\": \"weight\",\n        \"measureValue\": 16,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Gala\",\n        \"measure\": \"weight\",\n        \"measureValue\": 14,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Stardust\",\n        \"measure\": \"weight\",\n        \"measureValue\": 4,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Attika\",\n        \"measure\": \"weight\",\n        \"measureValue\": 10,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Red Delicious\",\n        \"measure\": \"weight\",\n        \"measureValue\": 20,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Sweetheart\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Benton\",\n        \"measure\": \"weight\",\n        \"measureValue\": 14,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Yellow Petite\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 43,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$12\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Kiona\",\n        \"measure\": \"weight\",\n        \"measureValue\": 12,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Nanshodaidai\",\n        \"measure\": \"weight\",\n        \"measureValue\": 7,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Blood or pigmented\",\n        \"measure\": \"weight\",\n        \"measureValue\": 4,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Orangeglo\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 25,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Clementine\",\n        \"measure\": \"weight\",\n        \"measureValue\": 4,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Trifoliate\",\n        \"measure\": \"weight\",\n        \"measureValue\": 19,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Cosmic Crisp\",\n        \"measure\": \"weight\",\n        \"measureValue\": 13,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Yellow Petite\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 10,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Regina\",\n        \"measure\": \"weight\",\n        \"measureValue\": 10,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Dark Red\",\n        \"measure\": \"weight\",\n        \"measureValue\": 18,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Bergamot\",\n        \"measure\": \"weight\",\n        \"measureValue\": 3,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Early Robin\",\n        \"measure\": \"weight\",\n        \"measureValue\": 2,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Skeena\",\n        \"measure\": \"weight\",\n        \"measureValue\": 5,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Cosmic Crisp\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Bergamot\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Golden Delicious\",\n        \"measure\": \"weight\",\n        \"measureValue\": 5,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Granny\",\n        \"measure\": \"weight\",\n        \"measureValue\": 17,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Naruto\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Orangeglo\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 34,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$8\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Attika\",\n        \"measure\": \"weight\",\n        \"measureValue\": 6,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Blood or pigmented\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Sweet Beauty\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 28,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$12\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Sweetheart\",\n        \"measure\": \"weight\",\n        \"measureValue\": 3,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Morello\",\n        \"measure\": \"weight\",\n        \"measureValue\": 13,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Allsweet\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 12,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$8\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Red\",\n        \"measure\": \"weight\",\n        \"measureValue\": 20,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Triple Crown\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 34,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Pink Lady\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Cosmic Crisp\",\n        \"measure\": \"weight\",\n        \"measureValue\": 3,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Nanshodaidai\",\n        \"measure\": \"weight\",\n        \"measureValue\": 13,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Early Robin\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Tieton\",\n        \"measure\": \"weight\",\n        \"measureValue\": 6,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Triple Crown\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 11,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$8\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Bing\",\n        \"measure\": \"weight\",\n        \"measureValue\": 17,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Trifoliate\",\n        \"measure\": \"weight\",\n        \"measureValue\": 2,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Attika\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Red Delicious\",\n        \"measure\": \"weight\",\n        \"measureValue\": 10,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Honeycrisp\",\n        \"measure\": \"weight\",\n        \"measureValue\": 13,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Blood or pigmented\",\n        \"measure\": \"weight\",\n        \"measureValue\": 18,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Jonagold\",\n        \"measure\": \"weight\",\n        \"measureValue\": 8,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Fuji\",\n        \"measure\": \"weight\",\n        \"measureValue\": 1,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Yellow Petite\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 22,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Bing\",\n        \"measure\": \"weight\",\n        \"measureValue\": 4,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Golden Delicious\",\n        \"measure\": \"weight\",\n        \"measureValue\": 2,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Golden Delicious\",\n        \"measure\": \"weight\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Nanshodaidai\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Common\",\n        \"measure\": \"weight\",\n        \"measureValue\": 12,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Orange Crisp\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Red Delicious\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Sweet Princess\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Florida Giant\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 6,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Sweetheart\",\n        \"measure\": \"weight\",\n        \"measureValue\": 3,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Pink Lady\",\n        \"measure\": \"weight\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Granny\",\n        \"measure\": \"weight\",\n        \"measureValue\": 16,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Gala\",\n        \"measure\": \"weight\",\n        \"measureValue\": 17,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Satsuma\",\n        \"measure\": \"weight\",\n        \"measureValue\": 10,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Allsweet\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 7,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$12\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Bing\",\n        \"measure\": \"weight\",\n        \"measureValue\": 3,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$4\"\n    },\n    {\n        \"item\": \"cherry\",\n        \"type\": \"Montmorency\",\n        \"measure\": \"weight\",\n        \"measureValue\": 10,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$5,99\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Klondike Blue Ribbon Striped\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Jonagold\",\n        \"measure\": \"weight\",\n        \"measureValue\": 6,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Acid-less \",\n        \"measure\": \"weight\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Golden Midget\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 8,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$9,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Seville\",\n        \"measure\": \"weight\",\n        \"measureValue\": 17,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Jonagold\",\n        \"measure\": \"weight\",\n        \"measureValue\": 19,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Jonagold\",\n        \"measure\": \"weight\",\n        \"measureValue\": 9,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"watermelon\",\n        \"type\": \"Klondike Blue Ribbon Striped\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 5,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$12\"\n    },\n    {\n        \"item\": \"apple\",\n        \"type\": \"Fuji\",\n        \"measure\": \"weight\",\n        \"measureValue\": 17,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$6\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Satsuma\",\n        \"measure\": \"weight\",\n        \"measureValue\": 15,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$2,99\"\n    },\n    {\n        \"item\": \"orange\",\n        \"type\": \"Naruto\",\n        \"measure\": \"weight\",\n        \"measureValue\": 2,\n        \"priceType\": \"pricePerKilo\",\n        \"priceValue\": \"$3\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local-server}}{{api-v2}}/products/create",
+									"host": [
+										"{{local-server}}{{api-v2}}"
+									],
+									"path": [
+										"products",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/products",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Academy",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Masters",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local-server}}{{api-v2}}/products/fad1fae6-a3e3-4350-9158-304bf2929e6d",
+									"host": [
+										"{{local-server}}{{api-v2}}"
+									],
+									"path": [
+										"products",
+										"fad1fae6-a3e3-4350-9158-304bf2929e6d"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/remove",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Academy",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Masters",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local-server}}{{api-v2}}/products/remove/b1e2c7f2-98cf-4bb8-aa65-d7fcf8327407",
+									"host": [
+										"{{local-server}}{{api-v2}}"
+									],
+									"path": [
+										"products",
+										"remove",
+										"b1e2c7f2-98cf-4bb8-aa65-d7fcf8327407"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/update",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Academy",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Masters",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"item\": \"watermelon\",\n        \"type\": \"Mini Piccolottttt\",\n        \"measure\": \"quantity\",\n        \"measureValue\": 46666,\n        \"priceType\": \"pricePerItem\",\n        \"priceValue\": \"$88\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local-server}}{{api-v2}}/products/update/b1e2c7f2-98cf-4bb8-aa65-d7fcf8327407",
+									"host": [
+										"{{local-server}}{{api-v2}}"
+									],
+									"path": [
+										"products",
+										"update",
+										"b1e2c7f2-98cf-4bb8-aa65-d7fcf8327407"
 									]
 								}
 							},

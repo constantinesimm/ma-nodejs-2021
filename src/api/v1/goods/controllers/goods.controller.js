@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable import/no-dynamic-require */
 const {HttpError} = require(`${process.cwd()}/src/libs`);
 const {
   response: {successMessages},
@@ -70,7 +68,8 @@ module.exports = {
   postData: async (req, res, next) => {
     try {
       if (!req.parseCsvAction) {
-        if (await streamService(req)) return res.json({message: successMessages.files.created});
+        if (await streamService(req))
+          return res.json({message: successMessages.files.created});
       } else {
         const response = goodsService.dataService(req.body);
 
